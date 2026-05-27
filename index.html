@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>שאלון דפוסי התקשרות במערכות יחסים</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #08152f;
+      --panel: #0f2a5e;
+      --card: #e5f1ff;
+      --text: #f3f8ff;
+      --muted: #c7d7ff;
+      --accent: #ffd95a;
+      --accent-dark: #f0c42a;
+      --border: rgba(255,255,255,0.15);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; direction: rtl; text-align: right; background: linear-gradient(180deg, #061026 0%, #0a1534 100%); color: var(--text); }
+    .page { max-width: 980px; margin: 0 auto; padding: 24px; }
+    .card { background: rgba(14, 36, 88, 0.96); border: 1px solid var(--border); border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.35); padding: 28px; }
+    h1 { margin-top: 0; color: #b9d7ff; }
+    h2 { margin-bottom: 16px; color: #fff; }
+    p, li, label { line-height: 1.7; }
+    .intro { display: grid; gap: 16px; margin-bottom: 28px; }
+    .intro strong { color: var(--accent); }
+    .questions { display: grid; gap: 16px; }
+    .question { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 16px; }
+    label { font-size: 1rem; margin-bottom: 10px; display: block; }
+    .radio-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .radio-group label { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.08); cursor: pointer; user-select: none; }
+    .radio-group input { accent-color: var(--accent); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 20px; }
+    .button, .link-button { border: none; border-radius: 12px; padding: 14px 22px; font-size: 1rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+    .button { background: var(--accent); color: #09101b; }
+    .button:hover { background: #e0b837; }
+    .link-button { background: #143d8c; color: #f9fbff; border: 1px solid rgba(255,255,255,0.12); }
+    .link-button:hover { background: #0f316c; }
+    .result-box { margin-top: 28px; padding: 22px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 20px; }
+    .score-line { margin: 10px 0; }
+    .table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+    .table th, .table td { padding: 10px 12px; border: 1px solid rgba(255,255,255,0.14); }
+    .table th { background: rgba(255,217,90,0.16); color: #fff; }
+    .disclaimer { margin-top: 24px; padding: 18px; background: rgba(255,255,255,0.08); border-left: 4px solid var(--accent); border-radius: 14px; }
+    .highlight { color: var(--accent); }
+    @media (max-width: 720px) { .actions { flex-direction: column; align-items: stretch; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <h1>שאלון דפוסי התקשרות במערכות יחסים</h1>
+      <div class="intro">
+        <p>לפניך סדרת משפטים המתארים תחושות והתנהגויות במערכות יחסים קרובות. בחרי את התשובה שמתאימה לך ביותר בכל משפט.</p>
+        <div>
+          <strong>סולם תשובות</strong>
+          <ul>
+            <li>1 — בכלל לא נכון עבורי</li>
+            <li>2 — מעט נכון</li>
+            <li>3 — נכון חלקית</li>
+            <li>4 — די נכון</li>
+            <li>5 — מאוד נכון</li>
+          </ul>
+        </div>
+      </div>
+
+      <form id="quizForm">
+        <div class="questions">
+          <div class="question"><label>1. אני מרגיש/ה בנוח להיות קרוב/ה רגשית לאנשים.</label><div class="radio-group"><label><input type="radio" name="q1" value="1">1</label><label><input type="radio" name="q1" value="2">2</label><label><input type="radio" name="q1" value="3" checked>3</label><label><input type="radio" name="q1" value="4">4</label><label><input type="radio" name="q1" value="5">5</label></div></div>
+          <div class="question"><label>2. אני מעדיפ/ה להתמודד לבד גם כשקשה לי.</label><div class="radio-group"><label><input type="radio" name="q2" value="1">1</label><label><input type="radio" name="q2" value="2">2</label><label><input type="radio" name="q2" value="3" checked>3</label><label><input type="radio" name="q2" value="4">4</label><label><input type="radio" name="q2" value="5">5</label></div></div>
+          <div class="question"><label>3. כשאדם חשוב לי מתרחק מעט, אני מתחיל/ה לחשוש שמשהו לא בסדר.</label><div class="radio-group"><label><input type="radio" name="q3" value="1">1</label><label><input type="radio" name="q3" value="2">2</label><label><input type="radio" name="q3" value="3" checked>3</label><label><input type="radio" name="q3" value="4">4</label><label><input type="radio" name="q3" value="5">5</label></div></div>
+          <div class="question"><label>4. קל לי לסמוך על אנשים שקרובים אליי.</label><div class="radio-group"><label><input type="radio" name="q4" value="1">1</label><label><input type="radio" name="q4" value="2">2</label><label><input type="radio" name="q4" value="3" checked>3</label><label><input type="radio" name="q4" value="4">4</label><label><input type="radio" name="q4" value="5">5</label></div></div>
+          <div class="question"><label>5. לפעמים קרבה רגשית מרגישה לי חונקת.</label><div class="radio-group"><label><input type="radio" name="q5" value="1">1</label><label><input type="radio" name="q5" value="2">2</label><label><input type="radio" name="q5" value="3" checked>3</label><label><input type="radio" name="q5" value="4">4</label><label><input type="radio" name="q5" value="5">5</label></div></div>
+          <div class="question"><label>6. אני זקוק/ה להרבה סימני אהבה כדי להרגיש רגוע/ה בקשר.</label><div class="radio-group"><label><input type="radio" name="q6" value="1">1</label><label><input type="radio" name="q6" value="2">2</label><label><input type="radio" name="q6" value="3" checked>3</label><label><input type="radio" name="q6" value="4">4</label><label><input type="radio" name="q6" value="5">5</label></div></div>
+          <div class="question"><label>7. אני מצליח/ה לבקש תמיכה כשאני צריך/ה אותה.</label><div class="radio-group"><label><input type="radio" name="q7" value="1">1</label><label><input type="radio" name="q7" value="2">2</label><label><input type="radio" name="q7" value="3" checked>3</label><label><input type="radio" name="q7" value="4">4</label><label><input type="radio" name="q7" value="5">5</label></div></div>
+          <div class="question"><label>8. אני נבהל/ת בקלות משינויים קטנים בהתנהגות של אנשים קרובים.</label><div class="radio-group"><label><input type="radio" name="q8" value="1">1</label><label><input type="radio" name="q8" value="2">2</label><label><input type="radio" name="q8" value="3" checked>3</label><label><input type="radio" name="q8" value="4">4</label><label><input type="radio" name="q8" value="5">5</label></div></div>
+          <div class="question"><label>9. קשה לי לשתף רגשות עמוקים עם אחרים.</label><div class="radio-group"><label><input type="radio" name="q9" value="1">1</label><label><input type="radio" name="q9" value="2">2</label><label><input type="radio" name="q9" value="3" checked>3</label><label><input type="radio" name="q9" value="4">4</label><label><input type="radio" name="q9" value="5">5</label></div></div>
+          <div class="question"><label>10. אני מרגיש/ה ראוי/ה לאהבה ולקשר יציב.</label><div class="radio-group"><label><input type="radio" name="q10" value="1">1</label><label><input type="radio" name="q10" value="2">2</label><label><input type="radio" name="q10" value="3" checked>3</label><label><input type="radio" name="q10" value="4">4</label><label><input type="radio" name="q10" value="5">5</label></div></div>
+          <div class="question"><label>11. כשמישהו לא עונה לי, קשה לי להפסיק לחשוב על זה.</label><div class="radio-group"><label><input type="radio" name="q11" value="1">1</label><label><input type="radio" name="q11" value="2">2</label><label><input type="radio" name="q11" value="3" checked>3</label><label><input type="radio" name="q11" value="4">4</label><label><input type="radio" name="q11" value="5">5</label></div></div>
+          <div class="question"><label>12. אני נוטה להסתיר רגשות כדי לא להיות פגיע/ה.</label><div class="radio-group"><label><input type="radio" name="q12" value="1">1</label><label><input type="radio" name="q12" value="2">2</label><label><input type="radio" name="q12" value="3" checked>3</label><label><input type="radio" name="q12" value="4">4</label><label><input type="radio" name="q12" value="5">5</label></div></div>
+          <div class="question"><label>13. אני מסוגל/ת לשמור על תחושת ביטחון גם בזמן ריחוק זמני בקשר.</label><div class="radio-group"><label><input type="radio" name="q13" value="1">1</label><label><input type="radio" name="q13" value="2">2</label><label><input type="radio" name="q13" value="3" checked>3</label><label><input type="radio" name="q13" value="4">4</label><label><input type="radio" name="q13" value="5">5</label></div></div>
+          <div class="question"><label>14. אני בודק/ת הרבה אם הקשר עדיין “בסדר”.</label><div class="radio-group"><label><input type="radio" name="q14" value="1">1</label><label><input type="radio" name="q14" value="2">2</label><label><input type="radio" name="q14" value="3" checked>3</label><label><input type="radio" name="q14" value="4">4</label><label><input type="radio" name="q14" value="5">5</label></div></div>
+          <div class="question"><label>15. עצמאות חשובה לי יותר מקרבה רגשית.</label><div class="radio-group"><label><input type="radio" name="q15" value="1">1</label><label><input type="radio" name="q15" value="2">2</label><label><input type="radio" name="q15" value="3" checked>3</label><label><input type="radio" name="q15" value="4">4</label><label><input type="radio" name="q15" value="5">5</label></div></div>
+          <div class="question"><label>16. אני מרגיש/ה בנוח להישען על אנשים קרובים כשקשה לי.</label><div class="radio-group"><label><input type="radio" name="q16" value="1">1</label><label><input type="radio" name="q16" value="2">2</label><label><input type="radio" name="q16" value="3" checked>3</label><label><input type="radio" name="q16" value="4">4</label><label><input type="radio" name="q16" value="5">5</label></div></div>
+          <div class="question"><label>17. אני חושש/ת שינטשו אותי.</label><div class="radio-group"><label><input type="radio" name="q17" value="1">1</label><label><input type="radio" name="q17" value="2">2</label><label><input type="radio" name="q17" value="3" checked>3</label><label><input type="radio" name="q17" value="4">4</label><label><input type="radio" name="q17" value="5">5</label></div></div>
+          <div class="question"><label>18. כשמישהו מתקרב אליי מאוד, לפעמים מתעורר בי רצון להתרחק.</label><div class="radio-group"><label><input type="radio" name="q18" value="1">1</label><label><input type="radio" name="q18" value="2">2</label><label><input type="radio" name="q18" value="3" checked>3</label><label><input type="radio" name="q18" value="4">4</label><label><input type="radio" name="q18" value="5">5</label></div></div>
+          <div class="question"><label>19. אני מסוגל/ת לדבר בפתיחות על מה שאני מרגיש/ה.</label><div class="radio-group"><label><input type="radio" name="q19" value="1">1</label><label><input type="radio" name="q19" value="2">2</label><label><input type="radio" name="q19" value="3" checked>3</label><label><input type="radio" name="q19" value="4">4</label><label><input type="radio" name="q19" value="5">5</label></div></div>
+          <div class="question"><label>20. אני זקוק/ה להרגעה לעיתים קרובות בתוך קשרים.</label><div class="radio-group"><label><input type="radio" name="q20" value="1">1</label><label><input type="radio" name="q20" value="2">2</label><label><input type="radio" name="q20" value="3" checked>3</label><label><input type="radio" name="q20" value="4">4</label><label><input type="radio" name="q20" value="5">5</label></div></div>
+          <div class="question"><label>21. אני מרגיש/ה לא בנוח כשמישהו תלוי בי רגשית.</label><div class="radio-group"><label><input type="radio" name="q21" value="1">1</label><label><input type="radio" name="q21" value="2">2</label><label><input type="radio" name="q21" value="3" checked>3</label><label><input type="radio" name="q21" value="4">4</label><label><input type="radio" name="q21" value="5">5</label></div></div>
+          <div class="question"><label>22. גם בזמן קונפליקט, אני מאמין/ה שאפשר לפתור דברים בלי לאבד את הקשר.</label><div class="radio-group"><label><input type="radio" name="q22" value="1">1</label><label><input type="radio" name="q22" value="2">2</label><label><input type="radio" name="q22" value="3" checked>3</label><label><input type="radio" name="q22" value="4">4</label><label><input type="radio" name="q22" value="5">5</label></div></div>
+          <div class="question"><label>23. אני רגיש/ה מאוד לסימנים של דחייה.</label><div class="radio-group"><label><input type="radio" name="q23" value="1">1</label><label><input type="radio" name="q23" value="2">2</label><label><input type="radio" name="q23" value="3" checked>3</label><label><input type="radio" name="q23" value="4">4</label><label><input type="radio" name="q23" value="5">5</label></div></div>
+          <div class="question"><label>24. אני מתקשה להישען על אחרים באמת.</label><div class="radio-group"><label><input type="radio" name="q24" value="1">1</label><label><input type="radio" name="q24" value="2">2</label><label><input type="radio" name="q24" value="3" checked>3</label><label><input type="radio" name="q24" value="4">4</label><label><input type="radio" name="q24" value="5">5</label></div></div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="button" onclick="calculateResults()">קבל תוצאות</button>
+          <a href="https://lp.ruthielax.co.il/AttachmentQues" target="_blank" class="link-button">שאלוני בחינה עצמית נוספים</a>
+        </div>
+      </form>
+
+      <div id="results" class="result-box">
+        <h2>תוצאות</h2>
+        <p id="resultsIntro">בחר/י תשובות ולחץ/י "קבל תוצאות" כדי לראות כאן את הציון והתיאור.</p>
+        <div class="score-line" id="safeScore"></div>
+        <div class="score-line" id="anxiousScore"></div>
+        <div class="score-line" id="avoidantScore"></div>
+        <div id="interpretation"></div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>דיסקליימר:</strong>
+        <p>שאלון זה מיועד למודעות והתבוננות עצמית בלבד ואינו מהווה אבחנה פסיכולוגית או רפואית. דפוסי התקשרות מושפעים מחוויות חיים, קשרים ותהליכי ריפוי, ועשויים להשתנות לאורך הזמן.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('resultsIntro').textContent = 'בחר/י תשובות ולחץ/י "קבל תוצאות" כדי לראות כאן את הציון והתיאור.';
+    });
+
+    function calculateResults() {
+      const scores = Array.from({ length: 24 }, (_, i) => {
+        const radio = document.querySelector('input[name="q' + (i + 1) + '"]:checked');
+        return radio ? Number(radio.value) : 3;
+      });
+      const reversed = new Set([3, 6, 9, 12, 15, 18, 21]);
+      const normalized = scores.map((value, index) => reversed.has(index) ? 6 - value : value);
+
+      const anxiousIndices = [2, 5, 7, 10, 13, 16, 19, 22];
+      const avoidantIndices = [1, 4, 8, 11, 14, 17, 20, 23];
+      const secureIndices = [0, 3, 6, 9, 12, 15, 18, 21];
+
+      const sum = indices => indices.reduce((total, idx) => total + normalized[idx], 0);
+      const secureScore = sum(secureIndices);
+      const anxiousScore = sum(anxiousIndices);
+      const avoidantScore = sum(avoidantIndices);
+
+      document.getElementById('safeScore').textContent = 'התקשרות בטוחה: ' + secureScore + ' (שאלות 1, 4, 7, 10, 13, 16, 19, 22 לאחר הפיכת ניקוד)';
+      document.getElementById('anxiousScore').textContent = 'התקשרות חרדתית: ' + anxiousScore + ' (שאלות 3, 6, 8, 11, 14, 17, 20, 23)';
+      document.getElementById('avoidantScore').textContent = 'התקשרות נמנעת: ' + avoidantScore + ' (שאלות 2, 5, 9, 12, 15, 18, 21, 24)';
+
+      const interpret = score => {
+        if (score <= 18) return 'מאפיינים נמוכים יחסית';
+        if (score <= 29) return 'מאפיינים בינוניים';
+        return 'מאפיינים דומיננטיים יותר';
+      };
+
+      document.getElementById('interpretation').innerHTML = `
+        <p>טווח הציון לכל סולם: 8–40.</p>
+        <p>התקשרות בטוחה: ${interpret(secureScore)}.</p>
+        <p>התקשרות חרדתית: ${interpret(anxiousScore)}.</p>
+        <p>התקשרות נמנעת: ${interpret(avoidantScore)}.</p>
+      `;
+      document.getElementById('resultsIntro').textContent = 'התוצאה שלך כבר מוכנה כאן. אם שינית תשובות, לחצה שוב על "קבל תוצאות" כדי לעדכן.';
+    }
+  </script>
+</body>
+</html>
