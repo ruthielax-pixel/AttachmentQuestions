@@ -120,6 +120,10 @@
       document.getElementById('resultsIntro').textContent = 'בחר/י תשובות ולחץ/י "קבל תוצאות" כדי לראות כאן את הציון והתיאור.';
     });
 
+    function goToResults(resultType) {
+      window.location.href = `https://lp.ruthielax.co.il/YourResults?ref=${resultType}`;
+    }
+
     function calculateResults() {
       const scores = Array.from({ length: 24 }, (_, i) => {
         const radio = document.querySelector('input[name="q' + (i + 1) + '"]:checked');
@@ -137,23 +141,22 @@
       const anxiousScore = sum(anxiousIndices);
       const avoidantScore = sum(avoidantIndices);
 
-      document.getElementById('safeScore').textContent = 'התקשרות בטוחה: ' + secureScore + ' (שאלות 1, 4, 7, 10, 13, 16, 19, 22 לאחר הפיכת ניקוד)';
-      document.getElementById('anxiousScore').textContent = 'התקשרות חרדתית: ' + anxiousScore + ' (שאלות 3, 6, 8, 11, 14, 17, 20, 23)';
-      document.getElementById('avoidantScore').textContent = 'התקשרות נמנעת: ' + avoidantScore + ' (שאלות 2, 5, 9, 12, 15, 18, 21, 24)';
-
-      const interpret = score => {
-        if (score <= 18) return 'מאפיינים נמוכים יחסית';
-        if (score <= 29) return 'מאפיינים בינוניים';
-        return 'מאפיינים דומיננטיים יותר';
+      const styleScores = {
+        secure: secureScore,
+        anxious: anxiousScore,
+        avoidant: avoidantScore
       };
 
-      document.getElementById('interpretation').innerHTML = `
-        <p>טווח הציון לכל סולם: 8–40.</p>
-        <p>התקשרות בטוחה: ${interpret(secureScore)}.</p>
-        <p>התקשרות חרדתית: ${interpret(anxiousScore)}.</p>
-        <p>התקשרות נמנעת: ${interpret(avoidantScore)}.</p>
-      `;
-      document.getElementById('resultsIntro').textContent = 'התוצאה שלך כבר מוכנה כאן. אם שינית תשובות, לחצה שוב על "קבל תוצאות" כדי לעדכן.';
+      const rankedStyles = Object.entries(styleScores).sort(([, a], [, b]) => b - a);
+      const [topStyle] = rankedStyles[0];
+
+      const styleTypeMap = {
+        secure: 'safe',
+        anxious: 'anxious',
+        avoidant: 'avoidant'
+      };
+
+      goToResults(styleTypeMap[topStyle]);
     }
   </script>
 </body>
